@@ -4,7 +4,9 @@ module ActiveRecordPrettyKey
   class PrettyKeyTicket < ActiveRecord::Base
     @sqids = Sqids.new(
       min_length: 4,
-      alphabet: Rails.application.credentials.dig(:sqids, :alphabet) || Sqids::DEFAULT_ALPHABET,
+      alphabet: defined?(Rails) && Rails.application.respond_to?(:credentials) ?
+                (Rails.application.credentials.dig(:sqids, :alphabet) || Sqids::DEFAULT_ALPHABET) :
+                Sqids::DEFAULT_ALPHABET,
     )
 
     # Generate a new unique ID that works with PostgreSQL, MySQL, and SQLite

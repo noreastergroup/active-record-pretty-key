@@ -37,7 +37,19 @@ $ gem install active-record-pretty-key
 
 ## Usage
 
-Include the concern in your ApplicationRecord to user everywhere:
+### Setup
+
+First, run the generator to create the required tickets table:
+
+```bash
+rails generate active_record_pretty_key:install
+```
+
+This will create a migration that sets up the tickets table needed for generating unique IDs.
+
+### Including the Concern
+
+Include the concern in your ApplicationRecord to use everywhere:
 ```ruby
 class ApplicationRecord < ActiveRecord::Base
   primary_abstract_class
@@ -47,7 +59,7 @@ end
 
 OR
 
-Include the conern on a model by model basis:
+Include the concern on a model by model basis:
 ```ruby
 class Post < ApplicationRecord
   include ActiveRecordPrettyKey::Concern
