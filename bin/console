@@ -1,0 +1,47 @@
+#!/usr/bin/env ruby
+
+require "bundler/setup"
+require "active_record_pretty_key"
+
+# You can add fixtures and/or initialization code here to make experimenting
+# with your gem easier. You can also use this file to load the gem and
+# configure it for testing.
+
+# The following is for example purposes and should be removed from actual gem.
+puts "ActiveRecordPrettyKey #{ActiveRecordPrettyKey::VERSION}"
+puts "=" * 50
+
+# Example: Set up a simple test environment
+require "active_record"
+require "sqlite3"
+
+ActiveRecord::Base.establish_connection(
+  adapter: "sqlite3",
+  database: ":memory:"
+)
+
+# Create a test table
+ActiveRecord::Base.connection.create_table :posts do |t|
+  t.string :title
+  t.string :pretty_key
+  t.timestamps
+end
+
+# Example model
+class Post < ActiveRecord::Base
+  include ActiveRecordPrettyKey::Concern
+
+  has_pretty_key
+end
+
+# Now you can experiment in the console
+puts "Test environment ready!"
+puts "Try: Post.new(title: 'Test Post').generate_pretty_key"
+
+if defined?(Pry)
+  Pry.start
+else
+  puts "\nPry not available, starting IRB instead..."
+  require "irb"
+  IRB.start
+end
