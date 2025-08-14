@@ -4,16 +4,14 @@ A Ruby gem for generating and managing pretty, human-readable keys in ActiveReco
 
 ## Why Pretty Keys?
 
-| Feature | Regular Primary Keys | UUIDs | Pretty Keys |
+| Feature | Regular Primary Keys | UUID7 | Pretty Keys |
 |---------|---------------------|-------|-------------|
-| **Human Readable** | ❌ Sequential numbers (1, 2, 3...) | ❌ Long, random strings | ✅ Short, memorable strings |
+| **Human Readable** | ✅ Sequential numbers (1, 2, 3...) | ❌ Long, random strings | ✅ Short, memorable strings |
+| **In Order** | ✅ Yes |  ✅ Yes |  ✅ Yes |
 | **URL Friendly** | ✅ Simple and clean | ❌ Long and unwieldy | ✅ Short and clean |
 | **Security** | ❌ Predictable, easily guessable | ✅ Random and secure | ✅ Random but readable |
-| **Database Performance** | ✅ Excellent (auto-increment) | ❌ Poor (random insertion) | ✅ Good (indexed strings) |
-| **User Experience** | ❌ Confusing for users | ❌ Hard to share/remember | ✅ Easy to share and remember |
-| **SEO Friendly** | ❌ No meaningful content | ❌ No meaningful content | ✅ Can include meaningful prefixes |
 | **Length** | ✅ Very short | ❌ Very long (36 chars) | ✅ Short (8-12 chars) |
-| **Collision Risk** | ✅ None (auto-increment) | ✅ Extremely low | ✅ Very low (configurable) |
+| **Collision Risk** | ✅ None (auto-increment) | ✅ Extremely low | ✅ None (ticket database table) |
 
 Pretty keys give you the best of both worlds: human-readable identifiers that are secure, performant, and user-friendly.
 
@@ -39,31 +37,20 @@ $ gem install active-record-pretty-key
 
 ## Usage
 
-Include the concern in your ActiveRecord model:
-
+Include the concern in your ApplicationRecord to user everywhere:
 ```ruby
-class Post < ApplicationRecord
+class ApplicationRecord < ActiveRecord::Base
+  primary_abstract_class
   include ActiveRecordPrettyKey::Concern
-
-  has_pretty_key
 end
 ```
 
-### Configuration Options
+OR
 
-You can customize the pretty key generation:
-
+Include the conern on a model by model basis:
 ```ruby
 class Post < ApplicationRecord
   include ActiveRecordPrettyKey::Concern
-
-  has_pretty_key(
-    field: :pretty_key,
-    prefix: 'post',
-    length: 8,
-    unique: true,
-    alphabet: 'abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ0123456789'
-  )
 end
 ```
 
