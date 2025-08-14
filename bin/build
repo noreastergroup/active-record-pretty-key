@@ -1,0 +1,39 @@
+#!/usr/bin/env ruby
+require "fileutils"
+
+# path to your application root.
+APP_ROOT = File.expand_path("..", __dir__)
+
+def system!(*args)
+  system(*args) || abort("\n== Command #{args} failed ==")
+end
+
+FileUtils.chdir APP_ROOT do
+  puts "== Building active-record-pretty-key gem =="
+
+  # Clean previous builds
+  puts "Cleaning previous builds..."
+  FileUtils.rm_rf("pkg") if Dir.exist?("pkg")
+
+  # Run tests to ensure everything is working
+  puts "Running tests..."
+  system! "bundle exec rspec"
+
+  # Build the gem
+  puts "Building gem package..."
+  system! "gem build active-record-pretty-key.gemspec"
+
+  # Show the built gem
+  puts "\n== Gem built successfully! =="
+  if Dir.exist?("pkg")
+    gems = Dir.glob("pkg/*.gem")
+    if gems.any?
+      puts "Built gems:"
+      gems.each { |gem| puts "  #{gem}" }
+    else
+      puts "No gems found in pkg directory"
+    end
+  end
+
+  puts "\n== Build complete =="
+end
