@@ -1,4 +1,4 @@
-class CreateTickets < ActiveRecord::Migration<%= migration_version %>
+class CreatePrettyKeyTickets < ActiveRecord::Migration<%= migration_version %>
   def change
     create_table :pretty_key_tickets, id: :bigint do |t|
       t.string :stub, limit: 1, null: false
