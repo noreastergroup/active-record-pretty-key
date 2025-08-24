@@ -23,8 +23,9 @@ Gem::Specification.new do |spec|
   spec.executables = ["active_record_pretty_key"]
   spec.require_paths = ["lib"]
 
-    # Uncomment to register a new dependency of your gem
+  # Uncomment to register a new dependency of your gem
   spec.add_dependency "activerecord", ">= 6.0.0"
+  spec.add_dependency "rails", ">= 6.0.0"
   spec.add_dependency "sqids", "~> 0.1"
   spec.add_dependency "thor", "~> 1.0"
 

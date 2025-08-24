@@ -5,10 +5,10 @@ module ActiveRecordPrettyKey
     extend ActiveSupport::Concern
 
     included do
-      before_create :generate_sqid
+      before_create :generate_pretty_key
     end
 
-    def generate_sqid
+    def generate_pretty_key
       pk_attribute = self.class.primary_key
       return if pk_attribute.nil? || self.class.attribute_types[pk_attribute].nil? || self.class.attribute_types[pk_attribute].type != :string
 

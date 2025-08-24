@@ -4,7 +4,7 @@ require "rails/generators"
 
 module ActiveRecordPrettyKey
   module Generators
-    class InstallGenerator < Rails::Generators::NamedBase
+    class InstallGenerator < Rails::Generators::Base
       source_root File.expand_path("templates", __dir__)
       desc "Creates the tickets table migration for active-record-pretty-key"
 
