@@ -4,13 +4,12 @@ require "rails/generators"
 
 module ActiveRecordPrettyKey
   module Generators
-    class InstallGenerator < Rails::Generators::Base
+    class InstallGenerator < Rails::Generators::NamedBase
       source_root File.expand_path("templates", __dir__)
-
       desc "Creates the tickets table migration for active-record-pretty-key"
 
       def create_migration
-        template "create_tickets.rb", "db/migrate/create_tickets.rb"
+        template "create_tickets.erb", "db/migrate/#{Time.now.strftime("%Y%m%d%H%M%S")}_create_pretty_key_tickets.rb"
       end
 
       private

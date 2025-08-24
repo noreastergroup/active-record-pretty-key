@@ -1,0 +1,11 @@
+class CreateTickets < ActiveRecord::Migration<%= migration_version %>
+  def change
+    create_table :pretty_key_tickets, id: :bigint do |t|
+      t.string :stub, limit: 1, null: false
+    end
+    add_index :pretty_key_tickets, :stub, unique: true
+
+    # Seed initial value
+    execute "INSERT INTO pretty_key_tickets (stub) VALUES ('a')"
+  end
+end

@@ -2,6 +2,7 @@
 
 module ActiveRecordPrettyKey
   class PrettyKeyTicket < ActiveRecord::Base
+    self.table_name = "pretty_key_tickets"
     @sqids = Sqids.new(
       min_length: 4,
       alphabet: defined?(Rails) && Rails.application.respond_to?(:credentials) ?
@@ -18,18 +19,18 @@ module ActiveRecordPrettyKey
         if [ "postgresql", "postgis" ].include?(adapter)
           # PostgreSQL approach
           result = connection.execute(
-            "INSERT INTO tickets (stub) VALUES ('a')
-             ON CONFLICT (stub) DO UPDATE SET id = currval('tickets_id_seq')
+            "INSERT INTO pretty_key_tickets (stub) VALUES ('a')
+             ON CONFLICT (stub) DO UPDATE SET id = currval('pretty_key_tickets_id_seq')
              RETURNING id"
           )
           result[0]["id"]
         elsif [ "mysql", "mysql2" ].include?(adapter)
           # MySQL approach
-          connection.execute("REPLACE INTO tickets (stub) VALUES ('a');")
+          connection.execute("REPLACE INTO pretty_key_tickets (stub) VALUES ('a');")
           connection.execute("SELECT LAST_INSERT_ID()").first[0]
         else
           # SQLite approach (and fallback for others)
-          connection.execute("REPLACE INTO tickets (stub) VALUES ('a');")
+          connection.execute("REPLACE INTO pretty_key_tickets (stub) VALUES ('a');")
           last.id
         end
       end
