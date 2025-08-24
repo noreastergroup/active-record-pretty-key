@@ -8,5 +8,4 @@ require_relative "active_record_pretty_key/concern"
 
 module ActiveRecordPrettyKey
   class Error < StandardError; end
-  # Your code goes here...
 end
