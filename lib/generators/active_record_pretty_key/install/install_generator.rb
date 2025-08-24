@@ -9,7 +9,7 @@ module ActiveRecordPrettyKey
       desc "Creates the tickets table migration for active-record-pretty-key"
 
       def create_migration
-        template "create_tickets.erb", "db/migrate/#{Time.now.strftime("%Y%m%d%H%M%S")}_create_pretty_key_tickets.rb"
+        template "create_tickets.erb", "db/migrate/#{Time.now.utc.strftime("%Y%m%d%H%M%S")}_create_pretty_key_tickets.rb"
       end
 
       private
