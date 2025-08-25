@@ -18,14 +18,13 @@ Gem::Specification.new do |spec|
   spec.metadata["source_code_uri"] = spec.homepage
   spec.metadata["changelog_uri"] = "#{spec.homepage}/blob/main/CHANGELOG.md"
 
-  spec.files = Dir.glob("lib/**/*").select { |f| File.file?(f) }
+  spec.files = Dir['lib/**/*'] + ['VERSION']
   spec.bindir = "bin"
-  spec.executables = ["active_record_pretty_key"]
-  spec.require_paths = ["lib"]
+  spec.executables << "active-record-pretty-key"
 
   # Uncomment to register a new dependency of your gem
   spec.add_dependency "activerecord", ">= 6.0.0"
-  spec.add_dependency "rails", ">= 6.0.0"
+  spec.add_dependency "activesupport", ">= 6.0.0"
   spec.add_dependency "sqids", "~> 0.1"
   spec.add_dependency "thor", "~> 1.0"
 
