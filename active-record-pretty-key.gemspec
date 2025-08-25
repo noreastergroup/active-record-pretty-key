@@ -10,7 +10,7 @@ Gem::Specification.new do |spec|
 
   spec.summary = "A gem for generating pretty keys in ActiveRecord models"
   spec.description = "ActiveRecordPrettyKey provides functionality to generate and manage pretty, human-readable keys for ActiveRecord models."
-  spec.homepage = "https://github.com/yourusername/active-record-pretty-key"
+  spec.homepage = "https://github.com/noreastergroup/active-record-pretty-key"
   spec.license = "MIT"
   spec.required_ruby_version = ">= 2.7.0"
 
