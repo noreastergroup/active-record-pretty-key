@@ -5,8 +5,8 @@ require_relative "lib/active_record_pretty_key/version"
 Gem::Specification.new do |spec|
   spec.name = "active-record-pretty-key"
   spec.version = ActiveRecordPrettyKey::VERSION
-  spec.authors = ["Stuart Yamartino"]
-  spec.email = ["stu@stuyam.com"]
+  spec.authors = ["Stuart Yamartino", "John Nagro"]
+  spec.email = ["stu@stuyam.com", "john.nagro@gmail.com"]
 
   spec.summary = "A gem for generating pretty keys in ActiveRecord models"
   spec.description = "ActiveRecordPrettyKey provides functionality to generate and manage pretty, human-readable keys for ActiveRecord models."
