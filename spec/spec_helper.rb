@@ -1,5 +1,5 @@
 require "bundler/setup"
-require "active_record_pretty_key"
+require "active-record-pretty-key"
 require "active_record"
 require "sqlite3"
 
@@ -24,6 +24,13 @@ RSpec.configure do |config|
   config.before(:each) do
     ActiveRecord::Base.connection.tables.each do |table|
       ActiveRecord::Base.connection.drop_table(table)
+    end
+  end
+
+  # Create the pretty_key_tickets table that PrettyKeyTicket needs
+  config.before(:each) do
+    ActiveRecord::Base.connection.create_table :pretty_key_tickets do |t|
+      t.string :stub
     end
   end
 end
