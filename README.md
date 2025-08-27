@@ -115,6 +115,17 @@ post.generate_pretty_key
 post.save!
 ```
 
+### Active Storage
+
+When working with Active Storage remember to properly set the attachments foreign key type:
+```ruby
+class FixAttachmentsFks < ActiveRecord::Migration[8.0]
+  def change
+    change_column :active_storage_attachments, :record_id, :string, null: false
+  end
+end
+```
+
 ## Development
 
 After checking out the repo, run `bin/setup` to install dependencies. Then, run `rake spec` to run the tests. You can also run `bin/console` for an interactive prompt that will allow you to experiment.
