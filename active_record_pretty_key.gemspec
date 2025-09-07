@@ -19,6 +19,7 @@ Gem::Specification.new do |spec|
   spec.metadata["changelog_uri"] = "#{spec.homepage}/blob/main/CHANGELOG.md"
 
   spec.files = Dir['lib/**/*'] + ['VERSION']
+  # spec.executables << "active_record_pretty_key"
 
   spec.add_dependency "activerecord", ">= 6.0.0"
   spec.add_dependency "activesupport", ">= 6.0.0"
