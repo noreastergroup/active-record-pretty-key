@@ -10,7 +10,7 @@ Gem::Specification.new do |spec|
 
   spec.summary = "A gem for generating pretty keys in ActiveRecord models"
   spec.description = "ActiveRecordPrettyKey provides functionality to generate and manage pretty, human-readable keys for ActiveRecord models."
-  spec.homepage = "https://github.com/noreastergroup/active-record-pretty-key"
+  spec.homepage = "https://github.com/noreastergroup/active_record_pretty_key"
   spec.license = "MIT"
   spec.required_ruby_version = ">= 2.7.0"
 
@@ -19,14 +19,10 @@ Gem::Specification.new do |spec|
   spec.metadata["changelog_uri"] = "#{spec.homepage}/blob/main/CHANGELOG.md"
 
   spec.files = Dir['lib/**/*'] + ['VERSION']
-  # spec.executables << "active-record-pretty-key"
 
-  # Uncomment to register a new dependency of your gem
   spec.add_dependency "activerecord", ">= 6.0.0"
   spec.add_dependency "activesupport", ">= 6.0.0"
   spec.add_dependency "sqids", "~> 0.1"
   spec.add_dependency "thor", "~> 1.0"
 
-  # For more information and examples about making a new gem, check out our
-  # guide at https://bundler.io/guides/creating_gem.html
 end
