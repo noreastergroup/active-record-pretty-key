@@ -9,7 +9,7 @@ def system!(*args)
 end
 
 FileUtils.chdir APP_ROOT do
-  puts "== Building active-record-pretty-key gem =="
+  puts "== Building active_record_pretty_key gem =="
 
   # Clean previous builds
   puts "Cleaning previous builds..."
@@ -21,7 +21,7 @@ FileUtils.chdir APP_ROOT do
 
   # Build the gem
   puts "Building gem package..."
-  system! "gem build active-record-pretty-key.gemspec"
+  system! "gem build active_record_pretty_key.gemspec"
 
   # Show the built gem
   puts "\n== Gem built successfully! =="

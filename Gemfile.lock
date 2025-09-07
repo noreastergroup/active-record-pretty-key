@@ -1,7 +1,7 @@
 PATH
   remote: .
   specs:
-    active-record-pretty-key (0.1.1)
+    active_record_pretty_key (0.1.1)
       activerecord (>= 6.0.0)
       activesupport (>= 6.0.0)
       sqids (~> 0.1)
@@ -73,7 +73,7 @@ PLATFORMS
   ruby
 
 DEPENDENCIES
-  active-record-pretty-key!
+  active_record_pretty_key!
   activerecord (~> 7.0)
   bundler (~> 2.0)
   pry (~> 0.14)

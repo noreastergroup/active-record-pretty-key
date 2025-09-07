@@ -1,5 +1,5 @@
 require "bundler/setup"
-require "active-record-pretty-key"
+require "active_record_pretty_key"
 require "active_record"
 require "sqlite3"
 
