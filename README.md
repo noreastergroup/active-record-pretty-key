@@ -53,6 +53,23 @@ rails generate active_record_pretty_key:install
 
 This will create a migration that sets up the tickets table needed for generating unique IDs.
 
+### Customizing or Randomising the Sqids Alphabet
+
+Configration of a customized Sqids ID alphabet can be done by setting Rails credentials like so:
+
+```yaml
+sqids:
+  alphabet: "ENwUpVBslGq25afc6i0hyD4tnjxRY31Wouz7HFTeMKgSbmPZvJ9ALXCQdrkI8O"
+```
+
+This can be used to configure a randomized alphabet to obfuscate object IDs.
+
+To generate a shuffled alphabet:
+```ruby
+require 'sqids'
+puts Sqids::DEFAULT_ALPHABET.split('').shuffle.join
+```
+
 ### Creating Models
 
 Pretty keys require that your model use a string primary key:
